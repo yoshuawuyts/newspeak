@@ -1,0 +1,30 @@
+{
+  "name": "newspeak",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha --recursive --harmony-generators -R spec",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report text --recursive -- -R spec && rm -rf ./coverage/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoshuawuyts/newspeak"
+  },
+  "keywords": [],
+  "author": "Yoshua Wuyts <i@yoshuawuyts.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoshuawuyts/newspeak/issues"
+  },
+  "homepage": "https://github.com/yoshuawuyts/newspeak",
+  "devDependencies": {
+    "coveralls": "^2.10.0",
+    "istanbul": "^0.2.11",
+    "mocha": "^1.20.1",
+    "should": "^4.0.4"
+  },
+  "dependencies": {
+    "mustache": "^0.8.2"
+  }
+}
