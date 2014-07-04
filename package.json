@@ -25,6 +25,7 @@
     "should": "^4.0.4"
   },
   "dependencies": {
-    "mustache": "^0.8.2"
+    "mustache": "^0.8.2",
+    "object-join": "^1.0.0"
   }
 }
