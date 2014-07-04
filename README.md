@@ -48,7 +48,7 @@ l20n.register({nl: data});
  * Get a string from the store.
  */
 
-l20n.get('users', {count: 3}');
+l20n.get('users', {count: 3});
 // => '3 people'
 ```
 
