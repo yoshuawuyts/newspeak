@@ -69,7 +69,7 @@ l20n.config({gender: 'male', name: 'Tobi'});
 
 #### .register()
 Register an `{Object} data` with language strings. Takes a 
-`{String} language` and `{Object} data` as arguments. '{{Object}} data' can 
+`{String} language` and `{Object} data` as arguments. `{Object} data` can 
 contain both functions and strings.
 ```js
 var data = {
@@ -77,7 +77,8 @@ var data = {
     if (args.mood == 'hungry') return "I'm {{mood}} and want pizza."
     if (args.mood == 'happy') return "I'm {{mood}} and want a salad."
   },
-  favorite_color: 'green'
+  favorite_color: 'green',
+  user_gender: '{{gender}}'
 }
 l20n.register('fr', data);
 ```
