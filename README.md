@@ -54,8 +54,7 @@ l20n.get('users', {count: 3});
 
 ## API
 #### newspeak()
-Initializes an instance of `newspeak`. Takes an `{Object} opts` as argument 
-which is passed into `.config()`.
+Initializes an instance of `newspeak`. Takes an `{Object} opts` as argument.
 ```js
 var newspeak = require('newspeak');
 var l20n = newspeak({language: 'en'});
