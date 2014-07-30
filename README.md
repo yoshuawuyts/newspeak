@@ -2,14 +2,18 @@
 [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] 
 [![Test coverage][coveralls-image]][coveralls-url]
 
-This package is inspired by [Mozilla's L20n](http://l20n.org/) project. The L20n
-project aims to provide natural language support for _all_ languages. This 
-includes different forms for plurals, gender and conjugation. So that means you 
-can now properly support Slavic languages.
+This package is inspired by [Mozilla's L20n](http://l20n.org/) project. In 
+Mozilla's words:
 
-This package is different from the Mozilla project in that the syntax is just
-JavaScript. A basic understanding of JS should be sufficient to get started. Not
-only has this the advantage of being easy, it's also very fast.
+> L20n allows localizers to put small bits of logic into localization resources 
+> to codify the grammar of the language.
+
+This includes different forms for plurals, gender and conjugation. Supporting
+languages such as Polish should become much easier.
+
+Newspeak is diferrent in that the syntax is just JavaScript. A basic 
+understanding of JS should be sufficient to get started. Not only has this the 
+advantage of being easy, it's also very fast.
 
 ## Installation
 ```bash
@@ -55,16 +59,18 @@ l20n.get('users', {count: 3});
 
 ## API
 #### newspeak()
-Initializes an instance of `newspeak`. Takes `{Object} opts` as an argument.
 ```js
+// Initializes an instance of `newspeak`. Takes {Object} opts as an argument.
+
 var newspeak = require('newspeak');
 var l20n = newspeak({language: 'en'});
 ```
 
 #### .language()
-Set a `{String} language` to access corresponding language strings. Emits an 
-event whenever the language is changed, but not the first time it's set.
 ```js
+// Set a `{String} language` to access corresponding language strings. Emits a 
+// 'change' event whenever the language changes, but not the first time it's set.
+
 l20n.on('update', function(lang) {console.log(lang)});
 
 l20n.language('en');
@@ -73,16 +79,18 @@ l20n.language('sp');
 ```
 
 #### .configure()
-Store an `{Object} opts` to define configuration variables.
 ```js
+// Store an {Object} opts to define configuration variables.
+
 l20n.config({gender: 'male', name: 'Tobi'});
 ```
 
 #### .add()
-Register an `{Object} data` with language strings. Takes a 
-`{String} language` and `{Object} data` as arguments. `{Object} data` can 
-contain both functions and strings.
 ```js
+// Register an {Object} data with language strings. Takes a 
+// {String} language and {Object} data as arguments. {Object} data can 
+// contain both functions and strings.
+
 var data = {
   favorite_food: function(args) {
     if (args.mood == 'hungry') return "I'm {{mood}} and want pizza."
@@ -95,9 +103,11 @@ l20n.add('en', data);
 ```
 
 #### .remove()
-Remove an `{Object} data` from the store. Takes an `{String} language` and
-`{Object} data` as arguments. `.remove()` will traverse data keys 1 level deep.
+
 ```js
+// Remove an {Object} data from the store. Takes an {String} language and
+// {Object} data as arguments. .remove() will traverse data keys 1 level deep.
+
 var data = {
   favorite_food: function(args) {
     if (args.mood == 'hungry') return "I'm {{mood}}, and want pizza."
@@ -110,9 +120,10 @@ l20n.remove('en', data);
 ```
 
 #### .get()
-Get a parsed `{String}` from the store. Takes a `{String} query` and 
-`{Object} opts` as arguments.
 ```js
+// Get a parsed {String} from the store. Takes a {String} query and 
+// {Object} opts as arguments.
+
 var favoriteFood = l20n.get('favorite_food', {mood: happy});
 // => "I'm happy and want a salad."
 
