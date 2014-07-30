@@ -87,9 +87,9 @@ l20n.config({gender: 'male', name: 'Tobi'});
 
 #### .add()
 ```js
-// Register an {Object} data with language strings. Takes a 
-// {String} language and {Object} data as arguments. {Object} data can 
-// contain both functions and strings.
+// Register an {Object} data with language strings. Takes a {String} language 
+// and {Object} data as arguments. {Object} data can contain both functions and 
+// strings.
 
 var data = {
   favorite_food: function(args) {
