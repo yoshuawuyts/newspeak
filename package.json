@@ -1,6 +1,6 @@
 {
   "name": "newspeak",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,11 @@
     "type": "git",
     "url": "https://github.com/yoshuawuyts/newspeak"
   },
-  "keywords": ["l20n", "i18n", "localization"],
+  "keywords": [
+    "l20n",
+    "i18n",
+    "localization"
+  ],
   "author": "Yoshua Wuyts <i@yoshuawuyts.com>",
   "license": "MIT",
   "devDependencies": {
