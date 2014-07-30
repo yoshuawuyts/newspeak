@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+var Emitter = require('events').EventEmitter;
 var objectJoin = require('object-join');
 var mustache = require('mustache');
 var assert = require('assert');
@@ -33,6 +34,12 @@ function NewSpeak(opts) {
 }
 
 /**
+ * Inherit from `Emitter.prototype`.
+ */
+
+NewSpeak.prototype.__proto__ = Emitter.prototype;
+
+/**
  * Set the language.
  *
  * @param {String} lang
@@ -41,6 +48,10 @@ function NewSpeak(opts) {
 
 l20n.language = function(lang) {
   assert('string' == typeof lang, 'Lang should be a string');
+
+  // emit an event if language was changed.
+  if (this.lang) this.emit('update', lang);
+
   this.lang = lang;
 }
 

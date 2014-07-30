@@ -62,9 +62,14 @@ var l20n = newspeak({language: 'en'});
 ```
 
 #### .language()
-Set a `{String} language` to access corresponding language strings.
+Set a `{String} language` to access corresponding language strings. Emits an 
+event whenever the language is changed, but not the first time it's set.
 ```js
+l20n.on('update', function(lang) {console.log(lang)});
+
 l20n.language('en');
+l20n.language('sp');
+//=> 'sp'
 ```
 
 #### .configure()

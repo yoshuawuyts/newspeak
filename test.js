@@ -54,6 +54,17 @@ describe('.language()', function() {
     l20n.language('en');
     l20n.lang.should.eql('en');
   });
+  it('should emit an event on language change', function() {
+    var n = [];
+    l20n.on('update', function(lang) {
+      n.push(lang);
+    })
+
+    // only checks for updates, so 'en' should not be included.
+    l20n.language('en');
+    l20n.language('sp');
+    n.should.eql(['sp']);
+  });
 });
 
 describe('.add()', function() {
