@@ -24,7 +24,7 @@ $ npm i --save newspeak
 
 var newspeak = require('newspeak');
 var l20n = newspeak({language: 'nl', gender: 'male'});
-l20n.currentLanguage('nl');
+l20n.language('nl');
 
 /**
  * Create a language object.

@@ -6,14 +6,22 @@
 
 var should = require('should');
 var newspeak = require('./index');
+var l20n = newspeak();
 
 /**
- * Test
+ * BeforeEach.
+ */
+
+beforeEach(function() {
+  l20n = newspeak();
+});
+
+/**
+ * Test.
  */
 
 describe('newspeak()', function () {
   it('should initialize with empty objects', function() {
-    var l20n = newspeak();
     l20n.store.should.be.empty;
     l20n.config.should.be.empty;
   });
@@ -21,12 +29,10 @@ describe('newspeak()', function () {
 
 describe('.configure()', function () {
   it('should catch errors', function() {
-    var l20n = newspeak();
     l20n.configure.bind(l20n, 123)
       .should.throw('Data should be an object');
   });
   it('should save a configuration object', function() {
-    var l20n = newspeak();
     l20n.configure({gender: 'male'});
 
     l20n.config.should.eql({gender: 'male'});
@@ -37,15 +43,19 @@ describe('.configure()', function () {
   });
 });
 
+describe('.language()', function() {
+  it('should catch errors', function() {
+    l20n.configure
+  });
+});
+
 describe('.register()', function() {
   it('should catch errors', function() {
-    var l20n = newspeak();
 
     l20n.register.bind(l20n, 123).should.throw('Lang should be a string');
     l20n.register.bind(l20n, 'nl', 123).should.throw('Data should be an object');
   });
   it('should register language objects', function() {
-    var l20n = newspeak();
     var blob = {sentence: 'hello'};
     var blob2 = {reason: 'food'};
 
@@ -64,7 +74,6 @@ describe('.register()', function() {
 
 describe('.unregister()', function() {
   it('should catch errors', function() {
-    var l20n = newspeak();
     l20n.unregister.bind(l20n, 123)
       .should.throw('Lang should be a string');
     l20n.unregister.bind(l20n, 'en', 123)
@@ -73,7 +82,6 @@ describe('.unregister()', function() {
       .should.throw('Language is not registered');
   });
   it('should unregister language data', function() {
-    var l20n = newspeak();
     var blob = {en: {foo: 'bar', faz: 'baz', user: 'Jane'}};
     var remove = {en: {foo: 'bar', faz: 'baz'}};
     l20n.store = blob;
@@ -84,7 +92,6 @@ describe('.unregister()', function() {
 
 describe('.get()', function() {
   it('should catch errors', function() {
-    var l20n = newspeak();
     l20n.get.bind(l20n, 123)
       .should.throw('Query should be a string');
     l20n.get.bind(l20n, 'en', 123)
@@ -103,14 +110,12 @@ describe('.get()', function() {
       .should.throw('Store does not contain strings for query: string_resource');
   });
   it('should handle string resources', function() {
-    var l20n = newspeak();
     l20n.config = {language: 'en'};
     l20n.store.en = {foo: 'bar'};
 
     l20n.get('foo').should.eql('bar');
   });
   it('should handle function resources', function() {
-    var l20n = newspeak();
     l20n.config = {language: 'en'};
     l20n.store.en = {
       foo: function(args) {
