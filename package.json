@@ -11,13 +11,9 @@
     "type": "git",
     "url": "https://github.com/yoshuawuyts/newspeak"
   },
-  "keywords": [],
+  "keywords": ["l20n", "i18n", "localization"],
   "author": "Yoshua Wuyts <i@yoshuawuyts.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yoshuawuyts/newspeak/issues"
-  },
-  "homepage": "https://github.com/yoshuawuyts/newspeak",
   "devDependencies": {
     "coveralls": "^2.10.0",
     "istanbul": "^0.2.11",
