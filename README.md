@@ -40,10 +40,10 @@ var data = {
 }
 
 /**
- * Register language objects.
+ * Add language objects.
  */
 
-l20n.register('en', data);
+l20n.add('en', data);
 
 /**
  * Get a string from the store.
@@ -62,7 +62,7 @@ var l20n = newspeak({language: 'en'});
 ```
 
 #### .language()
-Set a `{String} language` mode to access corresponding language strings.
+Set a `{String} language` to access corresponding language strings.
 ```js
 l20n.language('en');
 ```
@@ -73,7 +73,7 @@ Store an `{Object} opts` to define configuration variables.
 l20n.config({gender: 'male', name: 'Tobi'});
 ```
 
-#### .register()
+#### .add()
 Register an `{Object} data` with language strings. Takes a 
 `{String} language` and `{Object} data` as arguments. `{Object} data` can 
 contain both functions and strings.
@@ -86,12 +86,12 @@ var data = {
   favorite_color: 'green',
   user_gender: '{{gender}}'
 }
-l20n.register('en', data);
+l20n.add('en', data);
 ```
 
-#### .unregister()
-Unregister an `{Object} data` from the store. Takes an `{String} language` and
-`{Object} data` as arguments. Unregister will traverse data keys 1 level deep.
+#### .remove()
+Remove an `{Object} data` from the store. Takes an `{String} language` and
+`{Object} data` as arguments. `.remove()` will traverse data keys 1 level deep.
 ```js
 var data = {
   favorite_food: function(args) {
@@ -101,7 +101,7 @@ var data = {
   favorite_color: 'green',
   user_gender: '{{gender}}'
 }
-l20n.unregister('en', data);
+l20n.remove('en', data);
 ```
 
 #### .get()

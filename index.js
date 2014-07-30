@@ -57,14 +57,14 @@ l20n.configure = function(data) {
 }
 
 /**
- * Register language data.
+ * Add language data.
  *
  * @param {String} lang
  * @param {Object} data
  * @api public
  */
 
-l20n.register = function(lang, data) {
+l20n.add = function(lang, data) {
   assert('string' == typeof lang, 'Lang should be a string');
   assert('object' == typeof data, 'Data should be an object');
 
@@ -83,7 +83,7 @@ l20n.register = function(lang, data) {
  * @api public
  */
 
-l20n.unregister = function(lang, data) {
+l20n.remove = function(lang, data) {
   assert('string' == typeof lang, 'Lang should be a string');
   assert('object' == typeof data, 'Data should be an object');
   assert(this.store[lang], 'Language is not registered');

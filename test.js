@@ -56,20 +56,20 @@ describe('.language()', function() {
   });
 });
 
-describe('.register()', function() {
+describe('.add()', function() {
   it('should catch errors', function() {
 
-    l20n.register.bind(l20n, 123).should.throw('Lang should be a string');
-    l20n.register.bind(l20n, 'nl', 123).should.throw('Data should be an object');
+    l20n.add.bind(l20n, 123).should.throw('Lang should be a string');
+    l20n.add.bind(l20n, 'nl', 123).should.throw('Data should be an object');
   });
-  it('should register language objects', function() {
+  it('should add language data', function() {
     var blob = {sentence: 'hello'};
     var blob2 = {reason: 'food'};
 
-    l20n.register('nl', blob);
+    l20n.add('nl', blob);
     l20n.store.should.eql({nl: blob});
 
-    l20n.register('nl', blob2);
+    l20n.add('nl', blob2);
     l20n.store.should.eql({
       nl: {
         sentence: 'hello',
@@ -79,20 +79,20 @@ describe('.register()', function() {
   });
 });
 
-describe('.unregister()', function() {
+describe('.remove()', function() {
   it('should catch errors', function() {
-    l20n.unregister.bind(l20n, 123)
+    l20n.remove.bind(l20n, 123)
       .should.throw('Lang should be a string');
-    l20n.unregister.bind(l20n, 'en', 123)
+    l20n.remove.bind(l20n, 'en', 123)
       .should.throw('Data should be an object');
-    l20n.unregister.bind(l20n, 'en', {})
+    l20n.remove.bind(l20n, 'en', {})
       .should.throw('Language is not registered');
   });
-  it('should unregister language data', function() {
+  it('should remove language data', function() {
     var blob = {en: {foo: 'bar', faz: 'baz', user: 'Jane'}};
     var remove = {en: {foo: 'bar', faz: 'baz'}};
     l20n.store = blob;
-    l20n.unregister('en', remove);
+    l20n.remove('en', remove);
     l20n.store.should.eql({en: {user: 'Jane'}});
   });
 });
