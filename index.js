@@ -11,23 +11,23 @@ var assert = require('assert');
  * Exports.
  */
 
-module.exports = NewSpeak;
+module.exports = Newspeak;
 
 /**
  * Expose prototype.
  */
 
-var l20n = NewSpeak.prototype;
+var l20n = Newspeak.prototype;
 
 /**
- * NewSpeak().
+ * Newspeak().
  *
  * @param {Object} opts
  * @api public
  */
 
-function NewSpeak(opts) {
-  if (!(this instanceof NewSpeak)) return new NewSpeak(opts);
+function Newspeak(opts) {
+  if (!(this instanceof Newspeak)) return new Newspeak(opts);
   this.config = opts || {};
   this.store = {};
   this.lang = '';
@@ -37,7 +37,7 @@ function NewSpeak(opts) {
  * Inherit from `Emitter.prototype`.
  */
 
-NewSpeak.prototype.__proto__ = Emitter.prototype;
+Newspeak.prototype.__proto__ = Emitter.prototype;
 
 /**
  * Set the language.
