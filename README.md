@@ -23,8 +23,9 @@ $ npm i --save newspeak
  */
 
 var newspeak = require('newspeak');
-var l20n = newspeak({language: 'nl', gender: 'male'});
-l20n.language('nl');
+var l20n = newspeak();
+l20n.language('en');
+l20n.configure({gender: 'male', name: 'Tobi'});
 
 /**
  * Create a language object.
@@ -42,7 +43,7 @@ var data = {
  * Register language objects.
  */
 
-l20n.register({nl: data});
+l20n.register('en', data);
 
 /**
  * Get a string from the store.
@@ -60,8 +61,14 @@ var newspeak = require('newspeak');
 var l20n = newspeak({language: 'en'});
 ```
 
+#### .language()
+Set a `{String} language` mode to access corresponding language strings.
+```js
+l20n.language('en');
+```
+
 #### .configure()
-Store an `{Object opts}` to define configuration variables.
+Store an `{Object} opts` to define configuration variables.
 ```js
 l20n.config({gender: 'male', name: 'Tobi'});
 ```
@@ -79,7 +86,7 @@ var data = {
   favorite_color: 'green',
   user_gender: '{{gender}}'
 }
-l20n.register('fr', data);
+l20n.register('en', data);
 ```
 
 #### .unregister()
@@ -94,7 +101,7 @@ var data = {
   favorite_color: 'green',
   user_gender: '{{gender}}'
 }
-l20n.unregister('fr', data);
+l20n.unregister('en', data);
 ```
 
 #### .get()

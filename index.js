@@ -27,8 +27,21 @@ var l20n = NewSpeak.prototype;
 
 function NewSpeak(opts) {
   if (!(this instanceof NewSpeak)) return new NewSpeak(opts);
-  this.store = {};
   this.config = opts || {};
+  this.store = {};
+  this.lang = '';
+}
+
+/**
+ * Set the language.
+ *
+ * @param {String} lang
+ * @api public
+ */
+
+l20n.language = function(lang) {
+  assert('string' == typeof lang, 'Lang should be a string');
+  this.lang = lang;
 }
 
 /**
@@ -92,11 +105,11 @@ l20n.unregister = function(lang, data) {
 l20n.get = function(query, args) {
   assert('string' == typeof query, 'Query should be a string');
   assert('object' == typeof args || 'undefined' == typeof args, 'Args should be an object');
-  assert(this.config.language, 'No language specified');
-  assert(this.store[this.config.language], 'Store does not contain strings for language: ' + this.config.language);
-  assert(this.store[this.config.language][query], 'Store does not contain strings for query: ' + query);
+  assert(this.lang, 'No language specified');
+  assert(this.store[this.lang], 'Store does not contain strings for language: ' + this.lang);
+  assert(this.store[this.lang][query], 'Store does not contain strings for query: ' + query);
 
-  var res = this.store[this.config.language][query];
+  var res = this.store[this.lang][query];
   var joinedArgs = args ? objectJoin(this.config, args) : this.config;
   if ('function' == typeof res) return mustache.render(res(joinedArgs), joinedArgs);
   return mustache.render(res, joinedArgs);

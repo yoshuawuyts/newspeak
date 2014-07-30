@@ -37,15 +37,22 @@ describe('.configure()', function () {
 
     l20n.config.should.eql({gender: 'male'});
 
-    l20n.configure({lang: 'sp'});
+    l20n.configure({something: 'sp'});
 
-    l20n.config.should.eql({gender: 'male', lang: 'sp'});
+    l20n.config.should.eql({gender: 'male', something: 'sp'});
   });
 });
 
 describe('.language()', function() {
   it('should catch errors', function() {
-    l20n.configure
+    l20n.language.bind(l20n, 123)
+      .should.throw('Lang should be a string');
+    l20n.language.bind(l20n, 'en')
+      .should.not.throw('Lang should be a string');
+  });
+  it('should set the language', function() {
+    l20n.language('en');
+    l20n.lang.should.eql('en');
   });
 });
 
@@ -99,7 +106,7 @@ describe('.get()', function() {
     l20n.get.bind(l20n, 'string_resource')
       .should.throw('No language specified');
 
-    l20n.config = {language: 'en'};
+    l20n.language('en');
 
     l20n.get.bind(l20n, 'string_resource')
       .should.throw('Store does not contain strings for language: en');
@@ -110,13 +117,13 @@ describe('.get()', function() {
       .should.throw('Store does not contain strings for query: string_resource');
   });
   it('should handle string resources', function() {
-    l20n.config = {language: 'en'};
+    l20n.language('en');
     l20n.store.en = {foo: 'bar'};
 
     l20n.get('foo').should.eql('bar');
   });
   it('should handle function resources', function() {
-    l20n.config = {language: 'en'};
+    l20n.language('en');
     l20n.store.en = {
       foo: function(args) {
         if ('hi' == args.foo) return 'no, no';
