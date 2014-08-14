@@ -1,18 +1,18 @@
 # newspeak
-[![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] 
+[![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
-This package is inspired by [Mozilla's L20n](http://l20n.org/) project. In 
+This package is inspired by [Mozilla's L20n](http://l20n.org/) project. In
 Mozilla's words:
 
-> L20n allows localizers to put small bits of logic into localization resources 
+> L20n allows localizers to put small bits of logic into localization resources
 > to codify the grammar of the language.
 
 This includes different forms for plurals, gender and conjugation. Supporting
 languages such as Polish should become much easier.
 
-Newspeak is diferrent in that the syntax is just JavaScript. A basic 
-understanding of JS should be sufficient to get started. Not only has this the 
+Newspeak is diferrent in that the syntax is just JavaScript. A basic
+understanding of JS should be sufficient to get started. Not only has this the
 advantage of being easy, it's also very fast.
 
 ## Installation
@@ -68,7 +68,7 @@ var l20n = newspeak({language: 'en'});
 
 #### .language()
 ```js
-// Set a `{String} language` to access corresponding language strings. Emits a 
+// Set a `{String} language` to access corresponding language strings. Emits a
 // 'change' event whenever the language changes, but not the first time it's set.
 
 l20n.on('update', function(lang) {console.log(lang)});
@@ -87,8 +87,8 @@ l20n.config({gender: 'male', name: 'Tobi'});
 
 #### .add()
 ```js
-// Register an {Object} data with language strings. Takes a {String} language 
-// and {Object} data as arguments. {Object} data can contain both functions and 
+// Register an {Object} data with language strings. Takes a {String} language
+// and {Object} data as arguments. {Object} data can contain both functions and
 // strings.
 
 var data = {
@@ -121,7 +121,7 @@ l20n.remove('en', data);
 
 #### .get()
 ```js
-// Get a parsed {String} from the store. Takes a {String} query and 
+// Get a parsed {String} from the store. Takes a {String} query and
 // {Object} opts as arguments.
 
 var favoriteFood = l20n.get('favorite_food', {mood: happy});
@@ -136,9 +136,9 @@ var userGender = l20n.get('user_gender');
 ## License
 [MIT](https://tldrlegal.com/license/mit-license) © [Yoshua Wuyts](http://yoshuawuyts.com)
 
-[npm-image]: https://img.shields.io/npm/v/newspeak.svg?style=flat
+[npm-image]: https://img.shields.io/npm/v/newspeak.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/newspeak
-[travis-image]: https://img.shields.io/travis/yoshuawuyts/newspeak.svg?style=flat
+[travis-image]: https://img.shields.io/travis/yoshuawuyts/newspeak.svg?style=flat-square
 [travis-url]: https://travis-ci.org/yoshuawuyts/newspeak
-[coveralls-image]: https://img.shields.io/coveralls/yoshuawuyts/newspeak.svg?style=flat
+[coveralls-image]: https://img.shields.io/coveralls/yoshuawuyts/newspeak.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/newspeak?branch=master
