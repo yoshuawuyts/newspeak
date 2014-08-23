@@ -1,5 +1,6 @@
 # newspeak
-[![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
 This package is inspired by [Mozilla's L20n](http://l20n.org/) project. In
@@ -22,19 +23,12 @@ $ npm i --save newspeak
 
 ## Overview
 ```js
-/**
- * Initialize.
- */
-
+// Initialize newspeak.
 var newspeak = require('newspeak');
-var l20n = newspeak();
-l20n.language('en');
-l20n.configure({gender: 'male', name: 'Tobi'});
+var l20n = newspeak({gender: 'male', name: 'Tobi'});
+l20n.language('en_US');
 
-/**
- * Create a language object.
- */
-
+// Add a language decision tree.
 var data = {
   users: function(obj) {
     if (0 === obj.count) return 'nobody';
@@ -42,55 +36,44 @@ var data = {
     return '{{count}} people';
   }
 }
+l20n.add('en_US', data);
 
-/**
- * Add language objects.
- */
-
-l20n.add('en', data);
-
-/**
- * Get a string from the store.
- */
-
+// Request a string based on parameters.
 l20n.get('users', {count: 3});
 // => '3 people'
 ```
 
 ## API
 #### newspeak()
+ Initializes an instance of `newspeak`. Takes an optional `{Object} opts` as
+ an argument.
 ```js
-// Initializes an instance of `newspeak`. Takes {Object} opts as an argument.
-
 var newspeak = require('newspeak');
-var l20n = newspeak({language: 'en'});
+var l20n = newspeak({age: 13, foo: 'bar'});
 ```
 
 #### .language()
+Set a `{String} language` to access corresponding language strings. Emits a
+`change` event whenever the language changes, but not the first time it's set.
 ```js
-// Set a `{String} language` to access corresponding language strings. Emits a
-// 'change' event whenever the language changes, but not the first time it's set.
-
 l20n.on('update', function(lang) {console.log(lang)});
 
-l20n.language('en');
-l20n.language('sp');
+l20n.language('en_US');
+l20n.language('da_DK');
 //=> 'sp'
 ```
 
 #### .configure()
+Store an `{Object} opts` to define configuration variables.
 ```js
-// Store an {Object} opts to define configuration variables.
-
 l20n.config({gender: 'male', name: 'Tobi'});
 ```
 
 #### .add()
+Register an `{Object} data` with language strings. Takes a `{String} language`
+and `{Object} data` as arguments. `{Object} data` can contain both functions and
+strings.
 ```js
-// Register an {Object} data with language strings. Takes a {String} language
-// and {Object} data as arguments. {Object} data can contain both functions and
-// strings.
-
 var data = {
   favorite_food: function(args) {
     if (args.mood == 'hungry') return "I'm {{mood}} and want pizza."
@@ -99,42 +82,33 @@ var data = {
   favorite_color: 'green',
   user_gender: '{{gender}}'
 }
-l20n.add('en', data);
+l20n.add('en_US', data);
 ```
 
 #### .remove()
+Remove an `{Object} data` from the store. Takes an `{String} language` and
+`{Object} data` as arguments. `.remove()` will traverse data keys 1 level deep.
 
 ```js
-// Remove an {Object} data from the store. Takes an {String} language and
-// {Object} data as arguments. .remove() will traverse data keys 1 level deep.
-
-var data = {
-  favorite_food: function(args) {
-    if (args.mood == 'hungry') return "I'm {{mood}}, and want pizza."
-    if (args.mood == 'happy') return "I'm {{mood}}, and want a salad."
-  },
-  favorite_color: 'green',
-  user_gender: '{{gender}}'
-}
-l20n.remove('en', data);
+l20n.remove('en_US', data);
 ```
 
 #### .get()
+Get a parsed `{String}` from the store. Takes a `{String} query` and
+`{Object} opts` as arguments.
 ```js
-// Get a parsed {String} from the store. Takes a {String} query and
-// {Object} opts as arguments.
-
-var favoriteFood = l20n.get('favorite_food', {mood: happy});
+l20n.get('favorite_food', {mood: happy});
 // => "I'm happy and want a salad."
 
-var favoriteColor = l20n.get('favorite_color');
+l20n.get('favorite_color');
 // => 'green'
 
-var userGender = l20n.get('user_gender');
+l20n.get('user_gender');
 // => 'male'
 ```
 ## License
-[MIT](https://tldrlegal.com/license/mit-license) © [Yoshua Wuyts](http://yoshuawuyts.com)
+[MIT](https://tldrlegal.com/license/mit-license) ©
+[Yoshua Wuyts](http://yoshuawuyts.com)
 
 [npm-image]: https://img.shields.io/npm/v/newspeak.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/newspeak
