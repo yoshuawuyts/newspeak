@@ -2,7 +2,6 @@
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![Dependency Status][david-image]][david-url]
 [![Downloads][downloads-image]][downloads-url]
 
 This package is inspired by [Mozilla's L20n](http://l20n.org/) project. In
@@ -109,8 +108,7 @@ l20n.get('user_gender');
 // => 'male'
 ```
 ## License
-[MIT](https://tldrlegal.com/license/mit-license) ©
-[Yoshua Wuyts](http://yoshuawuyts.com)
+[MIT](https://tldrlegal.com/license/mit-license)
 
 [npm-image]: https://img.shields.io/npm/v/newspeak.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/newspeak
@@ -118,7 +116,5 @@ l20n.get('user_gender');
 [travis-url]: https://travis-ci.org/yoshuawuyts/newspeak
 [coveralls-image]: https://img.shields.io/coveralls/yoshuawuyts/newspeak.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/newspeak?branch=master
-[david-image]: http://img.shields.io/david/yoshuawuyts/newspeak.svg?style=flat-square
-[david-url]: https://david-dm.org/yoshuawuyts/newspeak
 [downloads-image]: http://img.shields.io/npm/dm/newspeak.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/newspeak
