@@ -19,14 +19,14 @@ advantage of being easy, it's also very fast.
 
 ## Installation
 ```bash
-$ npm i --save newspeak
+npm install newspeak
 ```
 
-## Overview
+## Usage
 ```js
-// Initialize newspeak.
 var newspeak = require('newspeak');
 var l20n = newspeak({gender: 'male', name: 'Tobi'});
+
 l20n.language('en_US');
 
 // Add a language decision tree.
@@ -39,7 +39,7 @@ var data = {
 }
 l20n.add('en_US', data);
 
-// Request a string based on parameters.
+// request a string
 l20n.get('users', {count: 3});
 // => '3 people'
 ```
